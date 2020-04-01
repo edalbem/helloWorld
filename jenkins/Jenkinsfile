@@ -1,2 +1,19 @@
-echo $WORKSPACE
-whoami
+pipeline {
+    agent { label 'slave' }
+
+    options {
+        timestamps()
+    }
+    stages {
+        stage('Unit tests'){
+            steps {
+                echo 'unit tests ...'                
+            }
+            post {            
+                always {
+				          echo "Goodbye!"
+                }
+            }
+        }     
+    }
+}
